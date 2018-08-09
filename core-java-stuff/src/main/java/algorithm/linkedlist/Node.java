@@ -12,4 +12,12 @@ public class Node<E>{
         return this;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Node{");
+        sb.append("next=").append(next);
+        sb.append(", value=").append(value);
+        sb.append('}');
+        return sb.toString();
+    }
 }

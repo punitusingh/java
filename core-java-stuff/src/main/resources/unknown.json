@@ -1,0 +1,13 @@
+{
+  "id":5,
+  "name":"name",
+  "notInterstingMember":"notInterstingMember",
+  "anotherMember":10,
+  "forgetThisField":15,
+  "addANewProperty":2,
+  "nestedOne":{
+    "name":"name",
+    "something":"s"
+  }
+
+}
