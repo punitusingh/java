@@ -9,7 +9,7 @@ public class Node<E>{
 
     Node next(E n){
         this.next=new Node<E>(n);
-        return this;
+        return this.next;
     }
 
     @Override

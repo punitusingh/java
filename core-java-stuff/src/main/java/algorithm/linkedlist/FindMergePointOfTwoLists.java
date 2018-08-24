@@ -35,11 +35,57 @@ public class FindMergePointOfTwoLists {
             }else if(set.contains(head2.value)){
                 return head2.value;
             }
+            set.add(head1.value);
+            set.add(head2.value);
         }
 
         return -1;
     }
 
+    static int getLength(Node head){
+        int i=0;
+        while(head!=null){
+            i++;
+            head=head.next;
+        }
+
+        return i;
+    }
+
+    static Integer mergePointUsingDelta(Node<Integer> head1, Node<Integer> head2){
+        int lengthOfFirstLinkedList=getLength(head1);
+        System.out.println("lengthOfFirstLinkedList===>"+lengthOfFirstLinkedList);
+        int lengthOfSecondLinkedList=getLength(head2);
+        System.out.println("lengthOfSecondLinkedList===>"+lengthOfSecondLinkedList);
+
+        int delta=Math.abs(lengthOfFirstLinkedList-lengthOfSecondLinkedList);
+
+        Node<Integer> smallerList=null;
+        Node<Integer> largerList=null;
+        if(lengthOfFirstLinkedList>lengthOfSecondLinkedList){
+            smallerList=head2;
+            largerList=head1;
+        }else{
+            smallerList=head1;
+            largerList=head2;
+        }
+
+        while (delta>0){
+            largerList=largerList.next;
+            delta--;
+        }
+
+        while (largerList!=null && smallerList!=null){
+            if(largerList.value.equals(smallerList.value)){
+                return largerList.value;
+            }
+
+            largerList=largerList.next;
+            smallerList=smallerList.next;
+        }
+
+        return -1;
+    }
 
 
     public static void main(String[] args) {
@@ -54,5 +100,6 @@ public class FindMergePointOfTwoLists {
         System.out.println(firstLinkedList);
         System.out.println(secondLinkedList);
         System.out.println(mergePointUsingSet(firstLinkedList,secondLinkedList));
+        System.out.println(mergePointUsingDelta(firstLinkedList,secondLinkedList));
     }
 }
